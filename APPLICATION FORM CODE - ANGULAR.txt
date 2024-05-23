@@ -1,0 +1,158 @@
+APPLICATION FORM CODE - ANGULAR
+
+
+app.component.html
+<h1>Application Form</h1>
+<table>
+    <div class="application">
+        <tr>
+            <td>User ID: </td>
+            <td><input type="text" placeholder="Enter your Uset Id" [(ngModel)]="userId">
+            </td>
+        </tr>
+        <tr>
+            <td>User Name: </td>
+            <td><input type="text" [(ngModel)]="userName" placeholder="Enter Your Name">
+            </td>
+        </tr>
+        <tr>
+            <td>Gender :</td>
+            <td>
+                <label>
+                    <input type="radio" name="gender" [(ngModel)]="Option" value="Male">
+                    Male
+                </label>
+                <label>
+                    <input type="radio" name="gender" [(ngModel)]="Option" value="Female">
+                    Female
+                </label>
+                <label>
+                    <input type="radio" name="gender" [(ngModel)]="Option" value="Others">
+                    Others
+                </label>
+
+
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>Graduate :</td>
+            <td>
+
+                <select id="dropdown" [(ngModel)]="selectedOption" name="dropdown">
+                    <option value="" disabled selected>Select a graduate</option>
+                    <option value="Ug">Ug</option>
+                    <option value="Pg">Pg</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Course: </td>
+            <td>
+                <select id="checkbox" [(ngModel)]="courseOption" name="checkbox">
+                    <option value="" disabled selected>Select a Course</option>
+                    <option value="Python">Python</option>
+                    <option value="Java">Java</option>
+                    <option value="C++">C++</option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>Price :</td>
+            <td>
+                <label>
+                    <input type="checkbox" [(ngModel)]="isOption1Checked" name="Free">
+                    Free
+                </label>
+            </td>
+
+            <td>
+                <label>
+                    <input type="checkbox" [(ngModel)]="isOption2Checked" name="Paid">
+                    Paid
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button (click)="submitForm()">Submit</button>
+            </td>
+
+        </tr>
+        
+
+    </div>
+</table>
+
+
+
+
+app.component.scss
+
+
+h1{
+    text-align: center;
+    color: red;
+
+}
+
+
+.application{
+    color: darkblue;
+    padding-top: 20px;
+    padding-left: 630px;
+    font-size: larger;
+}
+
+
+
+app.component.ts
+
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, FormsModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+
+export class AppComponent {
+  title = 'project';
+
+  isOption1Checked: boolean = false;
+  isOption2Checked: boolean = false;
+  
+
+  // STEP 1
+  public userId: any ='';
+  public userName: any ='';
+  public Option: any='';
+  public selectedOption: any='';
+  public courseOption: any='';
+
+
+  ngOnInit() {
+  }
+
+
+  submitForm(){
+
+    console.log("UserId : " + this.userId)
+    console.log("userName :" + this.userName)
+    console.log("gender :" + this.Option)
+    console.log("graduate :"+this.selectedOption)
+    console.log("course :"+this.courseOption)
+    console.log("Price :"+this.isOption1Checked)
+    console.log("Price :"+this.isOption2Checked)
+  }
+
+
+
+}
